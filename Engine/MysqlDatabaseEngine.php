@@ -295,4 +295,13 @@ class MysqlDatabaseEngine extends AbstractDatabaseEngine
     {
         return $config->getPort() ?: 3306;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBackupDbName($id, DatabaseConfigurationInterface $databaseConfiguration)
+    {
+        //Mysql 5.5 has an issue with database name
+        return sprintf('%s_%s', self::SALT, md5($databaseConfiguration->getDbName() . $id));
+    }
 }
