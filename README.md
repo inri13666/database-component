@@ -1,4 +1,4 @@
-# Oro Database Component
+# Gorgo13 Database Component
 
 ### Limitations
 - Database user should have rights for DROP & CREATE DATABASE
