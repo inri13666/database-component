@@ -7,8 +7,6 @@ use Gorgo13\Component\Database\Service\ProcessExecutor;
 
 abstract class AbstractDatabaseEngine implements DatabaseEngineInterface
 {
-    const SALT = 'backup';
-
     const OS_WINDOWS = 'WINDOWS';
     const OS_LINUX = 'LINUX';
     const OS_MAC = 'DARWIN';
@@ -73,6 +71,6 @@ abstract class AbstractDatabaseEngine implements DatabaseEngineInterface
      */
     public function getBackupDbName($id, DatabaseConfigurationInterface $databaseConfiguration)
     {
-        return sprintf('%s_%s_%s', self::SALT, $databaseConfiguration->getDbName(), $id);
+        return sprintf('%s_%s', $databaseConfiguration->getDbName(), $id);
     }
 }

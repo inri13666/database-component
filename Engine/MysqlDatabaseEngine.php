@@ -297,7 +297,7 @@ class MysqlDatabaseEngine extends AbstractDatabaseEngine
      */
     public function getBackupDbName($id, DatabaseConfigurationInterface $databaseConfiguration)
     {
-        //Mysql 5.5 has an issue with database name
-        return sprintf('%s_%s', self::SALT, md5($databaseConfiguration->getDbName() . $id));
+        //TODO: Mysql 5.5 has an issue with length of database name
+        return parent::getBackupDbName($id, $databaseConfiguration);
     }
 }
