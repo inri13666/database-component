@@ -1,6 +1,6 @@
 <?php
 
-namespace Oro\Component\Database\Service;
+namespace Gorgo13\Component\Database\Service;
 
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;

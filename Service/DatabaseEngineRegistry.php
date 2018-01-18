@@ -1,25 +1,25 @@
 <?php
 
-namespace Oro\Component\Database\Service;
+namespace Gorgo13\Component\Database\Service;
 
-use Oro\Component\Database\Engine\DatabaseEngineInterface;
-use Oro\Component\Database\Exception\EngineNotFoundException;
-use Oro\Component\Database\Model\DatabaseConfigurationInterface;
+use Gorgo13\Component\Database\Engine\DatabaseEngineInterface;
+use Gorgo13\Component\Database\Exception\EngineNotFoundException;
+use Gorgo13\Component\Database\Model\DatabaseConfigurationInterface;
 
 class DatabaseEngineRegistry
 {
-    const SERVICE_TAG = 'oro.database.isolator';
+    const SERVICE_TAG = 'gorgo13.database.engine_registry';
 
     /** @var array|DatabaseEngineInterface[] */
-    protected $isolators = [];
+    protected $engines = [];
 
     /**
-     * @param DatabaseEngineInterface $databaseIsolator
+     * @param DatabaseEngineInterface $databaseEngine
      * @param string $alias
      */
-    public function addEngine(DatabaseEngineInterface $databaseIsolator, $alias)
+    public function addEngine(DatabaseEngineInterface $databaseEngine, $alias = null)
     {
-        $this->isolators[$alias] = $databaseIsolator;
+        $this->engines[$alias ?: $databaseEngine->getName()] = $databaseEngine;
     }
 
     /**
@@ -31,7 +31,7 @@ class DatabaseEngineRegistry
      */
     public function findEngine(DatabaseConfigurationInterface $configuration)
     {
-        foreach ($this->isolators as $isolator) {
+        foreach ($this->engines as $isolator) {
             if ($isolator->isConfigurationSupported($configuration)) {
                 return $isolator;
             }

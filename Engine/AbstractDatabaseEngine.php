@@ -1,8 +1,9 @@
 <?php
 
-namespace Oro\Component\Database\Engine;
+namespace Gorgo13\Component\Database\Engine;
 
-use Oro\Component\Database\Model\DatabaseConfigurationInterface;
+use Gorgo13\Component\Database\Model\DatabaseConfigurationInterface;
+use Gorgo13\Component\Database\Service\ProcessExecutor;
 
 abstract class AbstractDatabaseEngine implements DatabaseEngineInterface
 {
@@ -12,6 +13,19 @@ abstract class AbstractDatabaseEngine implements DatabaseEngineInterface
     const OS_LINUX = 'LINUX';
     const OS_MAC = 'DARWIN';
     const OS_UNKNOWN = 'UNKNOWN';
+
+    /**
+     * @var ProcessExecutor
+     */
+    protected $processExecutor;
+
+    /**
+     * @param ProcessExecutor $processExecutor
+     */
+    public function __construct(ProcessExecutor $processExecutor = null)
+    {
+        $this->processExecutor = $processExecutor?: new ProcessExecutor();
+    }
 
     /**
      * @return array

@@ -1,6 +1,6 @@
 <?php
 
-namespace Oro\Component\Database\Exception;
+namespace Gorgo13\Component\Database\Exception;
 
 class EngineNotFoundException extends \Exception
 {

@@ -1,11 +1,16 @@
 <?php
 
-namespace Oro\Component\Database\Engine;
+namespace Gorgo13\Component\Database\Engine;
 
-use Oro\Component\Database\Model\DatabaseConfigurationInterface;
+use Gorgo13\Component\Database\Model\DatabaseConfigurationInterface;
 
 interface DatabaseEngineInterface
 {
+    /**
+     * @return string
+     */
+    public function getName();
+
     /**
      * @param DatabaseConfigurationInterface $databaseConfiguration
      *

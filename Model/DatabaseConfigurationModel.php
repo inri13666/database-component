@@ -1,6 +1,6 @@
 <?php
 
-namespace Oro\Component\Database\Model;
+namespace Gorgo13\Component\Database\Model;
 
 class DatabaseConfigurationModel implements DatabaseConfigurationInterface
 {

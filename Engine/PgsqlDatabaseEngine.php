@@ -1,12 +1,13 @@
 <?php
 
-namespace Oro\Component\Database\Engine;
+namespace Gorgo13\Component\Database\Engine;
 
-use Oro\Component\Database\Model\DatabaseConfigurationInterface;
-use Oro\Component\Database\Service\ProcessExecutor;
+use Gorgo13\Component\Database\Model\DatabaseConfigurationInterface;
 
 class PgsqlDatabaseEngine extends AbstractDatabaseEngine
 {
+    const NAME = 'pgsql';
+
     /**
      * @var string
      */
@@ -23,16 +24,11 @@ class PgsqlDatabaseEngine extends AbstractDatabaseEngine
     protected $psqlBin = 'psql';
 
     /**
-     * @var ProcessExecutor
+     * @inheritDoc
      */
-    protected $processExecutor;
-
-    /**
-     * @param ProcessExecutor $processExecutor
-     */
-    public function __construct(ProcessExecutor $processExecutor)
+    public function getName()
     {
-        $this->processExecutor = $processExecutor;
+        return self::NAME;
     }
 
     /**
